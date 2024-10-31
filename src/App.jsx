@@ -5,7 +5,7 @@ function App() {
     // State: Dictionary containing the character unicode -> strokes and medians
     const [charDict, setCharDict] = useState({})
     async function loadCharacters() {
-        const response = await fetch(`${process.env.PUBLIC_URL}/graphics.txt`)
+        const response = await fetch("graphics.txt")
         const data = await response.text()
         const lines = data.trim().split("\n")
 
