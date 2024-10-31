@@ -59,10 +59,13 @@ function App() {
                 />
             </div>
 
-            <div className='flex'>
+            <div className='flex flex-col'>
                 {charDatas && charDatas.map((charData) => (
-                    <div className='w-[120px] resize'>
-                        <Character charData={charData} />
+                    <div className='flex w-[120px] resize'>
+                        <div className="mr-auto">
+                            <Character charData={charData} />
+                        </div>
+                        <CharacterSBS charData={charData} />
                     </div>
                 ))}
             </div>
@@ -73,21 +76,35 @@ function App() {
 
 const Character = ({ charData }) => {
     return (
-        <div className="flex justify-center items-center">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1024 1024"
-                height="120"
-                width="120"
-            >
-                <g transform="scale(1, -1) translate(0, -900)">
-                    {charData.map((stroke, index) => (
-                        <path key={index} d={stroke} fill="blue" stroke="black" strokeWidth="10" />
-                    ))}
-                </g>
-            </svg>
+        <div>
+            <div className="flex">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1024 1024"
+                    height="120"
+                    width="120"
+                >
+                    <g transform="scale(1, -1) translate(0, -900)">
+                        {charData.map((stroke, index) => (
+                            <path key={index} d={stroke} fill="blue" stroke="black" strokeWidth="10" />
+                        ))}
+                    </g>
+                </svg>
+            </div>
         </div>
-    );
-};
+    )
+}
+
+const CharacterSBS = ({ charData }) => {
+    return (
+        <>
+            {charData.map((_, index) => (
+                <div className='border'>
+                    <Character charData={charData.slice(0, index + 1)} />
+                </div>
+            ))}
+        </>
+    )
+}
 
 export default App
