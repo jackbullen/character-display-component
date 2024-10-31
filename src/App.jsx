@@ -77,6 +77,8 @@ const Character = ({ charData }) => {
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 1024 1024"
+                height="120"
+                width="120"
             >
                 <g transform="scale(1, -1) translate(0, -900)">
                     {charData.map((stroke, index) => (
